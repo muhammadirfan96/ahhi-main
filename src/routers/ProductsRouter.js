@@ -1,55 +1,55 @@
-import express from 'express';
+import express from "express";
 import {
   showProduct,
   findProducts,
   createProduct,
   updateProduct,
   deleteProduct,
-  uploadImage
-} from '../controllers/ProductsController.js';
+  uploadImage,
+} from "../controllers/ProductsController.js";
 import {
   showProductValidation,
   findProductsValidation,
   createProductValidation,
   updateProductValidation,
   deleteProductValidation,
-  uploadImageValidation
-} from '../validations/ProductsValidation.js';
-import verifyToken from '../middlewares/verifyToken.js';
+  uploadImageValidation,
+} from "../validations/ProductsValidation.js";
+import verifyToken from "../middlewares/verifyToken.js";
 const ProductsRouter = express.Router();
 
 ProductsRouter.get(
-  '/product/:id',
-  	verifyToken,
+  "/product/:id",
+  verifyToken,
   showProductValidation,
   showProduct
 );
 ProductsRouter.get(
-  '/products',
-  	verifyToken,
+  "/products",
+  verifyToken,
   findProductsValidation,
   findProducts
 );
 ProductsRouter.post(
-  '/product',
+  "/product",
   verifyToken,
   createProductValidation,
   createProduct
 );
 ProductsRouter.patch(
-  '/product/:id',
+  "/product/:id",
   verifyToken,
   updateProductValidation,
   updateProduct
 );
 ProductsRouter.delete(
-  '/product/:id',
+  "/product/:id",
   verifyToken,
   deleteProductValidation,
   deleteProduct
 );
 ProductsRouter.patch(
-  '/product/:id/photo',
+  "/product/:id/photo",
   verifyToken,
   uploadImageValidation,
   uploadImage

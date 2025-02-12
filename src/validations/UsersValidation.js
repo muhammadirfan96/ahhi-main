@@ -1,223 +1,225 @@
-import { body, query, param, cookie } from 'express-validator';
-import UsersModel from '../models/UsersModel.js';
-import runValidation from '../middlewares/runValidation.js';
-import jwt from 'jsonwebtoken';
-import bcrypt from 'bcryptjs';
+import { body, query, param, cookie } from "express-validator";
+import UsersModel from "../models/UsersModel.js";
+import runValidation from "../middlewares/runValidation.js";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
 import {
   refreshTokenKey,
   resetPasswordTokenKey,
-  activationUserTokenKey
-} from '../config/jwt.js';
+  activationUserTokenKey,
+} from "../config/jwt.js";
 
 const showUserValidation = [
-  param('id')
+  param("id")
     .isMongoId()
-    .withMessage('invalid ID')
-    .bail({ level: 'request' })
+    .withMessage("invalid ID")
+    .bail({ level: "request" })
     .custom(async (value, { req }) => {
       try {
         let filter;
-        if (req.role === 'admin') {
+        if (req.role === "admin") {
           filter = { _id: value };
-        } else if (req.role === 'user') {
-          if (value !== req.uid) throw new Error('this is not you');
+        } else if (req.role === "user") {
+          if (value !== req.uid) throw new Error("this is not you");
           filter = { _id: req.uid };
         }
 
-        const user = await UsersModel.findOne(filter);
-        if (!user) throw new Error('data not found');
+        const user = await UsersModel.findOne(filter).select(
+          "_id email role active"
+        );
+        if (!user) throw new Error("data not found");
         req.user = user;
       } catch (err) {
         throw new Error(err.message);
       }
       return true;
     }),
-  runValidation
+  runValidation,
 ];
 
 const findUsersValidation = [
-  query('limit')
+  query("limit")
     .optional()
     .isInt({ min: 1, max: 100 })
-    .withMessage('limit min: 1 and max: 100'),
-  query('page').optional().isInt().withMessage('page must integer'),
-  runValidation
+    .withMessage("limit min: 1 and max: 100"),
+  query("page").optional().isInt().withMessage("page must integer"),
+  runValidation,
 ];
 
 const deleteUserValidation = [...showUserValidation];
 
 const registerValidation = [
-  body('email')
+  body("email")
     .trim()
     .escape()
     .normalizeEmail()
     .isEmail()
-    .withMessage('email not valid')
-    .bail({ level: 'request' })
+    .withMessage("email not valid")
+    .bail({ level: "request" })
     .custom(async (value, { req }) => {
       try {
         const user = await UsersModel.findOne({
           email: value,
-          active: 1
+          active: 1,
         });
-        if (user) throw new Error('email already used');
+        if (user) throw new Error("email already used");
       } catch (err) {
         throw new Error(err.message);
       }
       return true;
     })
-    .bail({ level: 'request' }),
-  body('password')
+    .bail({ level: "request" }),
+  body("password")
     .isLength({ min: 8 })
-    .withMessage('password min. 8 character')
-    .bail('request')
+    .withMessage("password min. 8 character")
+    .bail("request")
     .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$/)
     .withMessage(
-      'password must contain uppercase, lowercase, number, and special character'
+      "password must contain uppercase, lowercase, number, and special character"
     )
-    .bail({ level: 'request' }),
-  body('confPassword').custom((value, { req }) => {
+    .bail({ level: "request" }),
+  body("confPassword").custom((value, { req }) => {
     if (value !== req.body.password)
-      throw new Error('corfirmation password not match');
+      throw new Error("corfirmation password not match");
     return true;
   }),
-  runValidation
+  runValidation,
 ];
 
 const activationUserValidation = [
-  cookie('activationUserToken')
+  cookie("activationUserToken")
     .custom((value, { req }) => {
       const decode = value && jwt.verify(value, activationUserTokenKey);
-      if (!decode) throw new Error('cookie not found');
+      if (!decode) throw new Error("cookie not found");
       req.decode = decode;
       return true;
     })
-    .bail({ level: 'request' }),
-  param('email')
+    .bail({ level: "request" }),
+  param("email")
     .custom((value, { req }) => {
-      if (value !== req.decode.email) throw new Error('email not match');
+      if (value !== req.decode.email) throw new Error("email not match");
       req.email = value;
       return true;
     })
-    .bail({ level: 'request' }),
-  body('activationToken').custom(async (value, { req }) => {
+    .bail({ level: "request" }),
+  body("activationToken").custom(async (value, { req }) => {
     try {
       const user =
         value &&
         (await UsersModel.findOne({
           email: req.email,
-          activationToken: value
+          activationToken: value,
         }));
-      if (!user) throw new Error('token invalid');
+      if (!user) throw new Error("token invalid");
       req.user = user;
     } catch (err) {
       throw new Error(err.message);
     }
     return true;
   }),
-  runValidation
+  runValidation,
 ];
 
 const loginValidation = [
-  body('email')
+  body("email")
     .custom(async (value, { req }) => {
       try {
         const user =
           value &&
           (await UsersModel.findOne({
             email: value,
-            active: 1
+            active: 1,
           }));
-        if (!user) throw new Error('email not match');
+        if (!user) throw new Error("email not match");
         req.user = user;
       } catch (err) {
         throw new Error(err.message);
       }
       return true;
     })
-    .bail({ level: 'request' }),
-  body('password').custom(async (value, { req }) => {
+    .bail({ level: "request" }),
+  body("password").custom(async (value, { req }) => {
     try {
       const match = value && (await bcrypt.compare(value, req.user.password));
-      if (!match) throw new Error('password not match');
+      if (!match) throw new Error("password not match");
     } catch (err) {
       throw new Error(err.message);
     }
     return true;
   }),
-  runValidation
+  runValidation,
 ];
 
 const refreshTokenValidation = [
-  cookie('refreshToken').custom((value, { req }) => {
+  cookie("refreshToken").custom((value, { req }) => {
     const decode = value && jwt.verify(value, refreshTokenKey);
-    if (!decode) throw new Error('cookie not found');
+    if (!decode) throw new Error("cookie not found");
     req.decode = decode;
     return true;
   }),
-  runValidation
+  runValidation,
 ];
 
 const forgotPasswordValidation = [
-  body('email').custom(async (value, { req }) => {
+  body("email").custom(async (value, { req }) => {
     try {
       const user = await UsersModel.findOne({ email: value, active: 1 });
-      if (!user) throw new Error('user not found');
+      if (!user) throw new Error("user not found");
       req.user = user;
     } catch (err) {
       throw new Error(err.message);
     }
     return true;
   }),
-  runValidation
+  runValidation,
 ];
 
 const resetPasswordValidation = [
-  cookie('resetPasswordToken')
+  cookie("resetPasswordToken")
     .custom((value, { req }) => {
       const decode = value && jwt.verify(value, resetPasswordTokenKey);
-      if (!decode) throw new Error('cookie not found');
+      if (!decode) throw new Error("cookie not found");
       req.decode = decode;
       return true;
     })
-    .bail({ level: 'request' }),
-  param('email')
+    .bail({ level: "request" }),
+  param("email")
     .custom((value, { req }) => {
-      if (value !== req.decode.email) throw new Error('email not match');
+      if (value !== req.decode.email) throw new Error("email not match");
       req.email = value;
       return true;
     })
-    .bail({ level: 'request' }),
-  body('resetPasswordToken').custom(async (value, { req }) => {
+    .bail({ level: "request" }),
+  body("resetPasswordToken").custom(async (value, { req }) => {
     try {
       const user =
         value &&
         (await UsersModel.findOne({
           email: req.email,
-          resetPasswordToken: value
+          resetPasswordToken: value,
         }));
-      if (!user) throw new Error('token invalid');
+      if (!user) throw new Error("token invalid");
       req.user = user;
     } catch (err) {
       throw new Error(err.message);
     }
     return true;
   }),
-  body('password')
+  body("password")
     .isLength({ min: 8 })
-    .withMessage('password min. 8 character')
-    .bail('request')
+    .withMessage("password min. 8 character")
+    .bail("request")
     .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$/)
     .withMessage(
-      'password must contain uppercase, lowercase, number, and special character'
+      "password must contain uppercase, lowercase, number, and special character"
     )
-    .bail({ level: 'request' }),
-  body('confPassword').custom((value, { req }) => {
+    .bail({ level: "request" }),
+  body("confPassword").custom((value, { req }) => {
     if (value !== req.body.password)
-      throw new Error('corfirmation password not match');
+      throw new Error("corfirmation password not match");
     return true;
   }),
-  runValidation
+  runValidation,
 ];
 
 const logoutValidation = [...refreshTokenValidation];
@@ -232,5 +234,5 @@ export {
   refreshTokenValidation,
   forgotPasswordValidation,
   resetPasswordValidation,
-  logoutValidation
+  logoutValidation,
 };

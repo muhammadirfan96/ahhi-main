@@ -1,4 +1,4 @@
-import express from 'express';
+import express from "express";
 import {
   showUser,
   findUsers,
@@ -9,8 +9,8 @@ import {
   refreshToken,
   forgotPassword,
   resetPassword,
-  logout
-} from '../controllers/UsersController.js';
+  logout,
+} from "../controllers/UsersController.js";
 import {
   showUserValidation,
   findUsersValidation,
@@ -21,28 +21,28 @@ import {
   refreshTokenValidation,
   forgotPasswordValidation,
   resetPasswordValidation,
-  logoutValidation
-} from '../validations/UsersValidation.js';
-import verifyToken from '../middlewares/verifyToken.js';
+  logoutValidation,
+} from "../validations/UsersValidation.js";
+import verifyToken from "../middlewares/verifyToken.js";
 const UsersRouter = express.Router();
 
-UsersRouter.get('/user/:id', verifyToken, showUserValidation, showUser);
-UsersRouter.get('/users', verifyToken, findUsersValidation, findUsers);
-UsersRouter.delete('/user/:id', verifyToken, deleteUserValidation, deleteUser);
-UsersRouter.post('/register', registerValidation, register);
+UsersRouter.get("/user/:id", verifyToken, showUserValidation, showUser); // ok
+UsersRouter.get("/users", verifyToken, findUsersValidation, findUsers); // ok
+UsersRouter.delete("/user/:id", verifyToken, deleteUserValidation, deleteUser); // ok
+UsersRouter.post("/register", registerValidation, register); // ok
 UsersRouter.patch(
-  '/activation-user/:email',
+  "/activation-user/:email",
   activationUserValidation,
   activationUser
-);
-UsersRouter.post('/login', loginValidation, login);
-UsersRouter.get('/refresh-token', refreshTokenValidation, refreshToken);
-UsersRouter.post('/forgot-password', forgotPasswordValidation, forgotPassword);
+); // ok
+UsersRouter.post("/login", loginValidation, login); // ok
+UsersRouter.get("/refresh-token", refreshTokenValidation, refreshToken); // ok
+UsersRouter.post("/forgot-password", forgotPasswordValidation, forgotPassword); // ok
 UsersRouter.patch(
-  '/reset-password/:email',
+  "/reset-password/:email",
   resetPasswordValidation,
   resetPassword
-);
-UsersRouter.delete('/logout', logoutValidation, logout);
+); // ok
+UsersRouter.delete("/logout", logoutValidation, logout);
 
 export default UsersRouter;

@@ -110,7 +110,7 @@ const createBarangValidation = [
 
 const updateBarangValidation = [
   ...showBarangValidation,
-  ...createBarangValidation,
+  ...createBarangValidation.filter((_, index) => index !== 0),
 ];
 const deleteBarangValidation = [...showBarangValidation];
 const uploadImageValidation = [...showBarangValidation];

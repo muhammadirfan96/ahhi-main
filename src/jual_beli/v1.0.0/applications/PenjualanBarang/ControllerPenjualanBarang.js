@@ -18,6 +18,7 @@ const ControllerPenjualanBarang = async (req, res, next) => {
       barang_id: updatedBarang._id,
       tanggal_jual: req.body.tanggal_jual,
       pembeli_id: req.body.pembeli_id,
+      createdBy: req.uid,
       updatedBy: req.uid,
     };
 

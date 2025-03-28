@@ -1,7 +1,7 @@
 {
-  "name": "express-server",
+  "name": "ahhi-main",
   "version": "1.0.0",
-  "description": "express-server",
+  "description": "ahhi-main",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -9,17 +9,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/muhammadirfan96/express-server.git"
+    "url": "git+https://github.com/muhammadirfan96/ahhi-main.git"
   },
   "keywords": [
-    "express-server"
+    "ahhi-main"
   ],
   "author": "muhammad irfan",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/muhammadirfan96/express-server/issues"
+    "url": "https://github.com/muhammadirfan96/ahhi-main/issues"
   },
-  "homepage": "https://github.com/muhammadirfan96/express-server#readme",
+  "homepage": "https://github.com/muhammadirfan96/ahhi-main#readme",
   "dependencies": {
     "axios": "^1.6.5",
     "bcryptjs": "^2.4.3",

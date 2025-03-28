@@ -1,0 +1,1043 @@
+{
+  "info": {
+    "_postman_id": "00f109da-a96f-4ba4-b362-49406a347d51",
+    "name": "jual-beli",
+    "description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "26816303"
+  },
+  "item": [
+    {
+      "name": "barang",
+      "item": [
+        {
+          "name": "index",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/jual_beli/v1.0.0/barangs",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["jual_beli", "v1.0.0", "barangs"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get-photo",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/public\\\\image\\\\1741575855200-aaa.png",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["public", "", "image", "", "1741575855200-aaa.png"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "show",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/jual_beli/v1.0.0/barang/6797a70e337264bea73602b6",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": [
+                "jual_beli",
+                "v1.0.0",
+                "barang",
+                "6797a70e337264bea73602b6"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"kode\":\"HP002\",\r\n    \"nama\":\"iqoo 11 pro\",\r\n    \"status\":\"1\",\r\n    \"harga_beli\" : 9500,\r\n    \"harga_jual\" : 0,\r\n    \"diskon\" : 0\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/jual_beli/v1.0.0/barang",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["jual_beli", "v1.0.0", "barang"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"kode\":\"HP003\",\r\n    \"nama\":\"asus tuf gaming 15 up\",\r\n    \"status\":\"1\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/jual_beli/v1.0.0/barang/6797a70e337264bea73602b6",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": [
+                "jual_beli",
+                "v1.0.0",
+                "barang",
+                "6797a70e337264bea73602b6"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "upload-image",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "photo",
+                  "type": "file",
+                  "src": "c:\\Users\\muham\\OneDrive\\Gambar\\aaa.png"
+                }
+              ],
+              "options": {
+                "formdata": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/jual_beli/v1.0.0/barang/6797a849337264bea73602c1/photo",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": [
+                "jual_beli",
+                "v1.0.0",
+                "barang",
+                "6797a849337264bea73602c1",
+                "photo"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/jual_beli/v1.0.0/barang/4",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["jual_beli", "v1.0.0", "barang", "4"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "pembeli",
+      "item": [
+        {
+          "name": "index",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/jual_beli/v1.0.0/pembelis",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["jual_beli", "v1.0.0", "pembelis"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "show",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/jual_beli/v1.0.0/pembeli/67aa80ba1e464d8bb2d050f9",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": [
+                "jual_beli",
+                "v1.0.0",
+                "pembeli",
+                "67aa80ba1e464d8bb2d050f9"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nama\" : \"budi\",\r\n    \"kontak\" : \"email@email.com\",\r\n    \"alamat\" : \"jl. katak no. 3\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/jual_beli/v1.0.0/pembeli",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["jual_beli", "v1.0.0", "pembeli"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nama\" : \"budi up\",\r\n    \"kontak\" : \"email@email.com\",\r\n    \"alamat\" : \"jl. katak no. 3\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/jual_beli/v1.0.0/pembeli/67aa80cd1e464d8bb2d050fb",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": [
+                "jual_beli",
+                "v1.0.0",
+                "pembeli",
+                "67aa80cd1e464d8bb2d050fb"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/jual_beli/v1.0.0/pembeli/67aa80cd1e464d8bb2d050fb",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": [
+                "jual_beli",
+                "v1.0.0",
+                "pembeli",
+                "67aa80cd1e464d8bb2d050fb"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "penjual",
+      "item": [
+        {
+          "name": "index",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/jual_beli/v1.0.0/penjuals",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["jual_beli", "v1.0.0", "penjuals"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "show",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/jual_beli/v1.0.0/penjual/67aa82181e464d8bb2d0510d",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": [
+                "jual_beli",
+                "v1.0.0",
+                "penjual",
+                "67aa82181e464d8bb2d0510d"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nama\" : \"tora\",\r\n    \"kontak\" : \"email@email.com\",\r\n    \"alamat\" : \"jl. katak no. 3\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/jual_beli/v1.0.0/penjual",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["jual_beli", "v1.0.0", "penjual"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nama\" : \"tora up\",\r\n    \"kontak\" : \"email@email.com\",\r\n    \"alamat\" : \"jl. katak no. 3\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/jual_beli/v1.0.0/penjual/67aa82181e464d8bb2d0510d",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": [
+                "jual_beli",
+                "v1.0.0",
+                "penjual",
+                "67aa82181e464d8bb2d0510d"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/jual_beli/v1.0.0/penjual/67aa82181e464d8bb2d0510d",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": [
+                "jual_beli",
+                "v1.0.0",
+                "penjual",
+                "67aa82181e464d8bb2d0510d"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "transaksi-penjualan",
+      "item": [
+        {
+          "name": "index",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/jual_beli/v1.0.0/transaksi-penjualans",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["jual_beli", "v1.0.0", "transaksi-penjualans"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "show",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/jual_beli/v1.0.0/transaksi-penjualan/67aa82181e464d8bb2d0510d",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": [
+                "jual_beli",
+                "v1.0.0",
+                "transaksi-penjualan",
+                "67aa82181e464d8bb2d0510d"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "application",
+      "item": [
+        {
+          "name": "pembelian-barang",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"kode\" : \"LP012\",\r\n    \"nama\" : \"asus\",\r\n    \"tanggal_beli\" : \"2025-07-21\",\r\n    \"penjual_id\" : \"67aa82051e464d8bb2d0510b\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/jual_beli/v1.0.0/pembelian-barang",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["jual_beli", "v1.0.0", "pembelian-barang"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "penjualan-barang",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"tanggal_jual\" : \"2025-07-27\",\r\n    \"pembeli_id\" : \"67aa80ba1e464d8bb2d050f9\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/jual_beli/v1.0.0/penjualan-barang/123",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["jual_beli", "v1.0.0", "penjualan-barang", "123"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "transaksi-pembelian",
+      "item": [
+        {
+          "name": "index",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/jual_beli/v1.0.0/transaksi-pembelians",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["jual_beli", "v1.0.0", "transaksi-pembelians"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "show",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/jual_beli/v1.0.0/transaksi-pembelian/67aa82181e464d8bb2d0510duu",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": [
+                "jual_beli",
+                "v1.0.0",
+                "transaksi-pembelian",
+                "67aa82181e464d8bb2d0510duu"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "show",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/user/67933daab915bcc546fb0c8b",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["user", "67933daab915bcc546fb0c8b"]
+            },
+            "description": "\n### GET /me\n\nThis endpoint retrieves user information.\n\n#### Request\nThis is a simple GET request with no request body.\n\n#### Response\nThe response will be in JSON format with the following schema:\n\n```json\n{\n    \"id\": \"\",\n    \"username\": \"\",\n    \"role\": \"\"\n}\n```\nThe `id` represents the user's ID, `username` represents the user's username, and `role` represents the user's role.\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "find",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/users",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["users"]
+            },
+            "description": "\n### GET /me\n\nThis endpoint retrieves user information.\n\n#### Request\nThis is a simple GET request with no request body.\n\n#### Response\nThe response will be in JSON format with the following schema:\n\n```json\n{\n    \"id\": \"\",\n    \"username\": \"\",\n    \"role\": \"\"\n}\n```\nThe `id` represents the user's ID, `username` represents the user's username, and `role` represents the user's role.\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "refresh-token",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OTMzZGFhYjkxNWJjYzU0NmZiMGM4YiIsImVtYWlsIjoibXVoYW1tYWRpcmZhbjE4N0BvdXRsb29rLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczOTIyNjI3OCwiZXhwIjoxNzM5MzEyNjc4fQ.tMPK98awwsFwCjbEvt61bxCFNfV2nSyQ5Ve8GJIu44A",
+                "name": "cookie",
+                "type": "text"
+              },
+              {
+                "key": "Cache-Control",
+                "value": "no-cache",
+                "name": "cache-control",
+                "type": "text"
+              },
+              {
+                "key": "Postman-Token",
+                "value": "<calculated when request is sent>",
+                "name": "postman-token",
+                "type": "text"
+              },
+              {
+                "key": "Host",
+                "value": "<calculated when request is sent>",
+                "name": "host",
+                "type": "text"
+              },
+              {
+                "key": "User-Agent",
+                "value": "PostmanRuntime/7.39.1",
+                "name": "user-agent",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "name": "accept",
+                "type": "text"
+              },
+              {
+                "key": "Accept-Encoding",
+                "value": "gzip, deflate, br",
+                "name": "accept-encoding",
+                "type": "text"
+              },
+              {
+                "key": "Connection",
+                "value": "keep-alive",
+                "name": "connection",
+                "type": "text"
+              },
+              {
+                "key": "Cookie",
+                "value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OTMzZGFhYjkxNWJjYzU0NmZiMGM4YiIsImVtYWlsIjoibXVoYW1tYWRpcmZhbjE4N0BvdXRsb29rLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczOTIyNjI3OCwiZXhwIjoxNzM5MzEyNjc4fQ.tMPK98awwsFwCjbEvt61bxCFNfV2nSyQ5Ve8GJIu44A",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5000/refresh-token",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["refresh-token"]
+            },
+            "description": "\n### GET /me\n\nThis endpoint retrieves user information.\n\n#### Request\nThis is a simple GET request with no request body.\n\n#### Response\nThe response will be in JSON format with the following schema:\n\n```json\n{\n    \"id\": \"\",\n    \"username\": \"\",\n    \"role\": \"\"\n}\n```\nThe `id` represents the user's ID, `username` represents the user's username, and `role` represents the user's role.\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "activation-user",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Cache-Control",
+                "value": "no-cache",
+                "name": "cache-control",
+                "type": "text"
+              },
+              {
+                "key": "Postman-Token",
+                "value": "<calculated when request is sent>",
+                "name": "postman-token",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "name": "content-type",
+                "type": "text"
+              },
+              {
+                "key": "Content-Length",
+                "value": "<calculated when request is sent>",
+                "name": "content-length",
+                "type": "text"
+              },
+              {
+                "key": "Host",
+                "value": "<calculated when request is sent>",
+                "name": "host",
+                "type": "text"
+              },
+              {
+                "key": "User-Agent",
+                "value": "PostmanRuntime/7.39.1",
+                "name": "user-agent",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "name": "accept",
+                "type": "text"
+              },
+              {
+                "key": "Accept-Encoding",
+                "value": "gzip, deflate, br",
+                "name": "accept-encoding",
+                "type": "text"
+              },
+              {
+                "key": "Connection",
+                "value": "keep-alive",
+                "name": "connection",
+                "type": "text"
+              },
+              {
+                "key": "Cookie",
+                "value": "activationUserToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11aGFtbWFkaXJmYW4xODdAb3V0bG9vay5jb20iLCJpYXQiOjE3Mzc3MDI4MjYsImV4cCI6MTczNzcwMzEyNn0.W8uKlCg9kAgss0fuazcA6cG8_F-PJJJUnK8fvjU3TbQ",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"activationToken\" : \"7b1c0020312cdc8374e49ef2478257\"  \r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/activation-user/muhammadirfan187@outlook.com",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["activation-user", "muhammadirfan187@outlook.com"]
+            },
+            "description": "\n### GET /me\n\nThis endpoint retrieves user information.\n\n#### Request\nThis is a simple GET request with no request body.\n\n#### Response\nThe response will be in JSON format with the following schema:\n\n```json\n{\n    \"id\": \"\",\n    \"username\": \"\",\n    \"role\": \"\"\n}\n```\nThe `id` represents the user's ID, `username` represents the user's username, and `role` represents the user's role.\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "forgot-password",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\" : \"email@email.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/forgot-password",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["forgot-password"]
+            },
+            "description": "\n### GET /me\n\nThis endpoint retrieves user information.\n\n#### Request\nThis is a simple GET request with no request body.\n\n#### Response\nThe response will be in JSON format with the following schema:\n\n```json\n{\n    \"id\": \"\",\n    \"username\": \"\",\n    \"role\": \"\"\n}\n```\nThe `id` represents the user's ID, `username` represents the user's username, and `role` represents the user's role.\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "reset-password",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Cache-Control",
+                "value": "no-cache",
+                "name": "cache-control",
+                "type": "text"
+              },
+              {
+                "key": "Postman-Token",
+                "value": "<calculated when request is sent>",
+                "name": "postman-token",
+                "type": "text"
+              },
+              {
+                "key": "Content-Length",
+                "value": "0",
+                "name": "content-length",
+                "type": "text"
+              },
+              {
+                "key": "Host",
+                "value": "<calculated when request is sent>",
+                "name": "host",
+                "type": "text"
+              },
+              {
+                "key": "User-Agent",
+                "value": "PostmanRuntime/7.39.1",
+                "name": "user-agent",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "name": "accept",
+                "type": "text"
+              },
+              {
+                "key": "Accept-Encoding",
+                "value": "gzip, deflate, br",
+                "name": "accept-encoding",
+                "type": "text"
+              },
+              {
+                "key": "Connection",
+                "value": "keep-alive",
+                "name": "connection",
+                "type": "text"
+              },
+              {
+                "key": "Cookie",
+                "value": "resetPasswordToken=cft67ygvbhu89ijn",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"resetPasswordToken\" : \"cft67ygvbhu89ijn\",\r\n    \"password\" : \"123123\",\r\n    \"confPassword\" : \"123123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/reset-password/email=email@email.com",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["reset-password", "email=email@email.com"]
+            },
+            "description": "\n### GET /me\n\nThis endpoint retrieves user information.\n\n#### Request\nThis is a simple GET request with no request body.\n\n#### Response\nThe response will be in JSON format with the following schema:\n\n```json\n{\n    \"id\": \"\",\n    \"username\": \"\",\n    \"role\": \"\"\n}\n```\nThe `id` represents the user's ID, `username` represents the user's username, and `role` represents the user's role.\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "delete",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Cache-Control",
+                "value": "no-cache",
+                "name": "cache-control",
+                "type": "text"
+              },
+              {
+                "key": "Postman-Token",
+                "value": "<calculated when request is sent>",
+                "name": "postman-token",
+                "type": "text"
+              },
+              {
+                "key": "Host",
+                "value": "<calculated when request is sent>",
+                "name": "host",
+                "type": "text"
+              },
+              {
+                "key": "User-Agent",
+                "value": "PostmanRuntime/7.39.1",
+                "name": "user-agent",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "name": "accept",
+                "type": "text"
+              },
+              {
+                "key": "Accept-Encoding",
+                "value": "gzip, deflate, br",
+                "name": "accept-encoding",
+                "type": "text"
+              },
+              {
+                "key": "Connection",
+                "value": "keep-alive",
+                "name": "connection",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5000/user/6791c7a89fc7ed4a8999c19f",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["user", "6791c7a89fc7ed4a8999c19f"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "logout",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Cookie",
+                "value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OTMzZGFhYjkxNWJjYzU0NmZiMGM4YiIsImVtYWlsIjoibXVoYW1tYWRpcmZhbjE4N0BvdXRsb29rLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczOTIyNjI3OCwiZXhwIjoxNzM5MzEyNjc4fQ.tMPK98awwsFwCjbEvt61bxCFNfV2nSyQ5Ve8GJIu44A",
+                "name": "cookie",
+                "type": "text"
+              },
+              {
+                "key": "Cache-Control",
+                "value": "no-cache",
+                "name": "cache-control",
+                "type": "text"
+              },
+              {
+                "key": "Postman-Token",
+                "value": "<calculated when request is sent>",
+                "name": "postman-token",
+                "type": "text"
+              },
+              {
+                "key": "Host",
+                "value": "<calculated when request is sent>",
+                "name": "host",
+                "type": "text"
+              },
+              {
+                "key": "User-Agent",
+                "value": "PostmanRuntime/7.39.1",
+                "name": "user-agent",
+                "type": "text"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "name": "accept",
+                "type": "text"
+              },
+              {
+                "key": "Accept-Encoding",
+                "value": "gzip, deflate, br",
+                "name": "accept-encoding",
+                "type": "text"
+              },
+              {
+                "key": "Connection",
+                "value": "keep-alive",
+                "name": "connection",
+                "type": "text"
+              },
+              {
+                "key": "Cookie",
+                "value": "refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OTMzZGFhYjkxNWJjYzU0NmZiMGM4YiIsImVtYWlsIjoibXVoYW1tYWRpcmZhbjE4N0BvdXRsb29rLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczOTIyNjI3OCwiZXhwIjoxNzM5MzEyNjc4fQ.tMPK98awwsFwCjbEvt61bxCFNfV2nSyQ5Ve8GJIu44A",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5000/logout?=",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["logout"],
+              "query": [
+                {
+                  "key": "",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "\n### GET /me\n\nThis endpoint retrieves user information.\n\n#### Request\nThis is a simple GET request with no request body.\n\n#### Response\nThe response will be in JSON format with the following schema:\n\n```json\n{\n    \"id\": \"\",\n    \"username\": \"\",\n    \"role\": \"\"\n}\n```\nThe `id` represents the user's ID, `username` represents the user's username, and `role` represents the user's role.\n\n"
+          },
+          "response": []
+        },
+        {
+          "name": "register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\" : \"muhammadirfan187@outlook.com\",\r\n    \"password\" : \"123123Saja#1\",\r\n    \"confPassword\" : \"123123Saja#1\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/register",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["register"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\" : \"muhammadirfan187@outlook.com\",\r\n    \"password\" : \"123123Saja#1\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/login",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["login"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OTMzZGFhYjkxNWJjYzU0NmZiMGM4YiIsImVtYWlsIjoibXVoYW1tYWRpcmZhbjE4N0BvdXRsb29rLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0MTU3NTcwMiwiZXhwIjoxNzQxNTkwNzAyfQ.jULF3dejJYh6qRnGqp3txuSWsoiF0iutOcq7BKd429A",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "id",
+      "value": "1"
+    },
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000"
+    }
+  ]
+}

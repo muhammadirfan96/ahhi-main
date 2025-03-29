@@ -5,7 +5,7 @@ const ControllerPembelianBarang = async (req, res, next) => {
     const barang = {
       kode: req.body.kode,
       nama: req.body.nama,
-      status: 1,
+      status: 0,
       createdBy: req.uid,
       updatedBy: req.uid,
     };
